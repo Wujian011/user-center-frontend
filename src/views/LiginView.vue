@@ -64,10 +64,12 @@ const onFinish = (values: any) => {
 
     h1 {
       font-weight: 600;
+      width: 100%;
+      text-align: center;
     }
 
     .login-btn {
-      width: 80%;
+      width: 100%;
     }
   }
 }
