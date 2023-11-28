@@ -1,9 +1,10 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <!--  <nav>-->
+  <!--    <router-link to="/">Home</router-link> |-->
+  <!--    <router-link to="/about">About</router-link>-->
+  <!--  </nav>-->
+  <!--  <router-view />-->
+  <LiginView />
 </template>
 
 <style lang="scss">
@@ -28,3 +29,6 @@ nav {
   }
 }
 </style>
+<script setup lang="ts">
+import LiginView from "@/views/LiginView.vue";
+</script>
