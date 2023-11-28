@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
     "ant-design-vue": "^4.0.7",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
@@ -43,7 +44,16 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "rules": {}
+    "rules": {
+      "vue/multi-word-component-names": [
+        "error",
+        {
+          "ignores": [
+            "index"
+          ]
+        }
+      ]
+    }
   },
   "browserslist": [
     "> 1%",
