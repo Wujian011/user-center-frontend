@@ -10,7 +10,7 @@
         class="left"
       >
         <div class="logo" />
-        <MenuLayout />
+        <MenuLayout :routes="routes" />
       </a-layout-sider>
       <!--右侧-->
       <a-layout class="right">
@@ -30,13 +30,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import {
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-} from "@ant-design/icons-vue";
+import routers from "@/router";
 import MenuLayout from "@/layout/MenuLayout.vue";
+import { computed } from "vue";
+import { RouteRecordRaw, useRoute, useRouter } from "vue-router";
 const onCollapse = (collapsed: boolean, type: string) => {
   console.log(collapsed, type);
 };
@@ -44,6 +41,31 @@ const onCollapse = (collapsed: boolean, type: string) => {
 const onBreakpoint = (broken: boolean) => {
   console.log(broken);
 };
+const route = useRoute();
+const router = useRouter();
+// 路由递归
+const routes = computed(() => {
+  function _noHidden(_routes: RouteRecordRaw[]) {
+    const filterRoute: RouteRecordRaw[] = [];
+    _routes.forEach((_route) => {
+      if (!_route?.meta?.isHidden) {
+        if (!_route.children || _route.children.length === 0) {
+          filterRoute.push(_route);
+        } else {
+          filterRoute.push({
+            ..._route,
+            children: _noHidden(_route.children)! || [],
+          });
+        }
+      }
+    });
+    return filterRoute;
+  }
+  return _noHidden(
+    router.getRoutes().find((item) => item.name === "layout")!.children
+  );
+});
+console.log(routes.value);
 </script>
 
 <style lang="scss">

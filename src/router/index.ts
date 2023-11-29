@@ -6,7 +6,7 @@ import Layout from "../layout/index.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
+    name: "layout",
     component: Layout,
     redirect: "/home",
     meta: {
@@ -17,18 +17,23 @@ const routes: Array<RouteRecordRaw> = [
         path: "/home",
         name: "主页",
         component: HomeView,
-        meta: {
-          icon: "<HomeTwoTone />",
-        },
       },
       {
         path: "/about",
-        name: "about",
+        name: "关于",
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
           import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+        children: [
+          {
+            path: "/about1",
+            name: "关于1",
+            component: () =>
+              import(/* webpackChunkName: "about" */ "../views/AboutView1.vue"),
+          },
+        ],
       },
     ],
   },
