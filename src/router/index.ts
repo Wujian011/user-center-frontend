@@ -9,14 +9,14 @@ const routes: Array<RouteRecordRaw> = [
     name: "layout",
     component: Layout,
     redirect: "/home",
-    meta: {
-      icon: "HomeTwoTone",
-    },
     children: [
       {
         path: "/home",
         name: "主页",
         component: HomeView,
+        meta: {
+          icon: "HomeTwoTone",
+        },
       },
       {
         path: "/about",

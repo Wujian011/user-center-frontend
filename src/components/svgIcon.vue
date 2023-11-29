@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, withDefaults, defineProps } from "vue";
+import { computed, defineProps, withDefaults } from "vue";
 
 interface Props {
   prefix?: string;
@@ -26,5 +26,6 @@ const className = computed(() => `svg-icon ${props.name}`);
   vertical-align: -0.15em;
   outline: medium;
   fill: currentcolor;
+  color: red;
 }
 </style>
