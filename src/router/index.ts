@@ -19,19 +19,17 @@ const routes: Array<RouteRecordRaw> = [
         },
       },
       {
-        path: "/about",
-        name: "关于",
+        path: "/user",
+        name: "用户管理",
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () =>
-          import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+        redirect: "/uerList",
         children: [
           {
-            path: "/about1",
-            name: "关于1",
-            component: () =>
-              import(/* webpackChunkName: "about" */ "../views/AboutView1.vue"),
+            path: "/user/uerList",
+            name: "用户列表",
+            component: () => import("../views/UserListView.vue"),
           },
         ],
       },

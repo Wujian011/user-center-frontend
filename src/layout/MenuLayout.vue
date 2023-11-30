@@ -7,6 +7,7 @@
         <a-menu-item
           :key="item.path"
           v-if="!item.children || item.children.length === 0"
+          @click="handleClick(item)"
         >
           <!-- user-outlined 应该是一个组件，需要正确引入 -->
 
@@ -27,10 +28,17 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { RouteRecordRaw } from "vue-router";
+import { RouteRecordRaw, useRoute, useRouter } from "vue-router";
 import SvgIcon from "@/components/svgIcon.vue";
 
 const props = defineProps<{ routes: Array<RouteRecordRaw> }>();
+
+const router = useRouter();
+
+// 点击菜单key 跳转
+const handleClick = (item: RouteRecordRaw) => {
+  router.push(item.path);
+};
 </script>
 
 <style lang="scss">
